@@ -1,11 +1,15 @@
 <template>
   <div class="leftNav">
     <el-col>
+      <!-- :router为true时，可以使用：index作为路由跳转 -->
       <el-menu
         :router="true"
         active-text-color="#000000"
         :default-active="
-          '/' + this.$route.path.split('/')[1] + '/' + this.$route.path.split('/')[2]
+          '/' +
+            this.$route.path.split('/')[1] +
+            '/' +
+            this.$route.path.split('/')[2]
         "
         class="el-menu-vertical-demo"
         text-color="#5c5c5c"
@@ -19,7 +23,10 @@
             <span slot="title">发现音乐</span>
           </el-menu-item>
           <el-menu-item index="/musicHome/recomVideo">
-            <i class="iconfont icon-video" style="color: #000000 !important"></i>
+            <i
+              class="iconfont icon-video"
+              style="color: #000000 !important"
+            ></i>
             <span slot="title">推荐视频</span>
           </el-menu-item>
         </div>

@@ -10,7 +10,10 @@
           />
         </div>
         <div class="singel-play-img">
-          <div :class="{ playBar: isPlaying, playBarReverse: !isPlaying }" ref="playBar">
+          <div
+            :class="{ playBar: isPlaying, playBarReverse: !isPlaying }"
+            ref="playBar"
+          >
             <img src="@/assets/image/player_bar.png" />
           </div>
           <div
@@ -18,7 +21,10 @@
             ref="playDisc"
             :style="{ animationPlayState: isPlaying ? 'running' : 'paused' }"
           >
-            <img src="@/assets/image/disc.png" style="width: 350px; height: 350px" />
+            <img
+              src="@/assets/image/disc.png"
+              style="width: 350px; height: 350px"
+            />
             <img
               style="
                 position: absolute;
@@ -57,9 +63,11 @@
                 "
               >
                 <span style="color: #000">专辑:</span
-                ><span style="cursor: pointer" @click="toAlbumPage(musicDetail.al.id)">{{
-                  musicDetail.alia[0] || musicDetail.al.name
-                }}</span>
+                ><span
+                  style="cursor: pointer"
+                  @click="toAlbumPage(musicDetail.al.id)"
+                  >{{ musicDetail.alia[0] || musicDetail.al.name }}</span
+                >
               </div>
               <div
                 style="
@@ -112,11 +120,17 @@
     <div class="singel-bottom">
       <div class="showComment">
         <!-- 评论区 -->
-        <p style="font-weight: 600; font-size: 20px; cursor: pointer; margin-left: 3%">
+        <p
+          style="font-weight: 600; font-size: 20px; cursor: pointer; margin-left: 3%"
+        >
           评论({{ comment.total }})
         </p>
         <div v-loading="isLoading" element-loading-text="加载中...">
-          <comment :comment="comment" @getCommentPage="getSongComment" ref="comment" />
+          <comment
+            :comment="comment"
+            @getCommentPage="getSongComment"
+            ref="comment"
+          />
         </div>
       </div>
       <!-- 相似歌曲 -->
@@ -193,9 +207,13 @@ export default {
           //动态绑定ref 根据距离顶部不同的位置来控制歌词滚动 (原生的滚动条动画效果未实现，需要的话可能需要换其他滚动条，eg:bater-scroll)
           //这里加入了一个效果就是滑下去查看歌词时，不会自动滑动 只有到了高亮显示在可视区才会滚动
           if (this.$refs.lyricRef[0].offsetTop > 100) {
-            this.$refs.lyricScroll.scrollTop = this.$refs.lyricRef[0].offsetTop - 100;
+            this.$refs.lyricScroll.scrollTop =
+              this.$refs.lyricRef[0].offsetTop - 100;
+              console.log(this.$refs.lyricRef[0].offsetTop,this.$refs.lyricScroll.scrollTop)
           } else if (this.$refs.lyricRef[0].offsetTop < -100) {
-            this.$refs.lyricScroll.scrollTop = this.$refs.lyricRef[0].offsetTop + 100;
+            this.$refs.lyricScroll.scrollTop =
+              this.$refs.lyricRef[0].offsetTop + 100;
+              console.log(this.$refs.lyricRef[0].offsetTop,this.$refs.lyricScroll.scrollTop);
           }
           //如果当前是最后一句歌词 代表歌曲要放送结束了 将我们的lyricIndex(当前歌词索引值还原成0便于下一曲使用)
           if (this.lyricIndex === this.lrcObject.length - 1) {
@@ -308,7 +326,7 @@ export default {
           });
         }
       }
-      oLRC.ms.sort(function (a, b) {
+      oLRC.ms.sort(function(a, b) {
         //按时间顺序排序
         return a.t - b.t;
       });

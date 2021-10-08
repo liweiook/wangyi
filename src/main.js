@@ -14,14 +14,14 @@ import "@/assets/css/global.css";
 import "@/assets/font_cloudMusic/iconfont.css";
 //解决跨域
 import { VueJsonp } from "vue-jsonp";
-
+// 专门为vue写的插件用Vue.use
 Vue.use(VueJsonp);
+// 不是专门为vue写的插件不能用Vue.use，只能给Vue的原型添加属性或方法
 Vue.prototype.$http = axios;
 axios.defaults.baseURL = "https://liweimusic.vercel.app/";
 // axios.defaults.baseURL = 'http://localhost:3000/'
 // axios.defaults.baseURL = 'https://autumnfish.cn/'
 // axios.defaults.baseURL = '/api'
-// axios.defaults.baseURL = 'http://8.129.133.120:3000/'
 axios.defaults.withCredentials = true;
 //引入vuescroll
 // import vuescroll from "vuescroll";
